@@ -1,0 +1,95 @@
+.header {
+  position: relative;
+  z-index: 10;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 270px 1fr auto;
+  align-items: center;
+  gap: 50px;
+  width: min(calc(100% - 200px), 1770px);
+  min-height: 144px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: block;
+  justify-self: start;
+  line-height: 0;
+}
+
+.logo img {
+  display: block;
+  width: 270px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 42px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.nav a {
+  transition: opacity 0.2s ease;
+}
+
+.nav a:hover {
+  opacity: 0.58;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  justify-self: end;
+  gap: 20px;
+}
+
+.header-address {
+  margin: 0 28px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.45;
+  white-space: nowrap;
+}
+
+.header-phone {
+  display: grid;
+  width: 53px;
+  height: 53px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--ink);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.appointment-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 181px;
+  min-height: 53px;
+  padding: 0 30px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.appointment-button:hover {
+  background: #59392b;
+}

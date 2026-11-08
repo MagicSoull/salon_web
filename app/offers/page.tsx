@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import NavigationClue from "../components/navigationClue";
@@ -13,7 +14,9 @@ export default function Offers(){
         <NavigationClue currentPage="Акции"/>
         <CurrentPageName currentPage="Акции"/>
         <About/>
-        <CardsList/>
+        <Suspense fallback={<div className="mt-10">Загрузка акций…</div>}>
+          <CardsList/>
+        </Suspense>
          </div>
         <Footer/>
     </div>

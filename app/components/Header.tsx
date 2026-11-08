@@ -1,21 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <details className="mobile-menu">
-          <summary aria-label="Открыть меню"><Image src="/offers/menu.svg" alt="" width={32} height={32} /></summary>
-          <nav aria-label="Мобильная навигация">
-            <Link href="/#about">О клинике</Link>
-            <Link href="/#services">Услуги</Link>
-            <Link href="/#specialists">Специалисты</Link>
-            <Link href="/offers">Акции</Link>
-            <Link href="/#documents">Документы</Link>
-            <Link href="/contacts">Контакты</Link>
-          </nav>
-        </details>
+        <MobileMenu />
         <Link className="logo" href="/" aria-label="Арт-Медика — на главную">
           <Image
             src="/logo.svg"

@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Telegram_logo 3" clip-path="url(#clip0_0_1920)">
+<g id="Vector">
+<use xlink:href="#stroke0_0_1920" fill="url(#paint0_linear_0_1920)"/>
+<use xlink:href="#stroke0_0_1920" fill="#0077FF"/>
+</g>
+<path id="Vector_2" d="M42.0681 56.8428C26.2438 56.8428 17.2179 45.7791 16.8418 27.3691H24.7684C25.0288 40.8816 30.8724 46.6052 35.501 47.7853V27.3691H42.9651V39.0228C47.5359 38.5213 52.3375 33.2108 53.9576 27.3691H61.4216C60.1776 34.5679 54.9703 39.8784 51.2674 42.0617C54.9703 43.8318 60.9011 48.4639 63.1576 56.8428H54.9414C53.1767 51.2372 48.7798 46.9002 42.9651 46.3101V56.8428H42.0681Z" fill="white"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_1920" x1="40" y1="0" x2="40" y2="80" gradientUnits="userSpaceOnUse">
+<stop stop-color="#61FD7D"/>
+<stop offset="1" stop-color="#26D044"/>
+</linearGradient>
+<clipPath id="clip0_0_1920">
+<rect width="80" height="80" fill="white"/>
+</clipPath>
+<path id="stroke0_0_1920" d="M40 80C62.0914 80 80 62.0914 80 40C80 17.9086 62.0914 0 40 0C17.9086 0 0 17.9086 0 40C0 62.0914 17.9086 80 40 80Z"/>
+</defs>
+</svg>

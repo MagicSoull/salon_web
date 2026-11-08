@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="header">
       <div className="header-inner">
-        <a className="logo" href="#top" aria-label="Арт-Медика — на главную">
+        <Link className="logo" href="/" aria-label="Арт-Медика — на главную">
           <Image
             src="/logo.svg"
             alt="Арт-Медика"
@@ -12,15 +13,15 @@ export default function Header() {
             height={64}
             priority
           />
-        </a>
+        </Link>
 
         <nav className="nav" aria-label="Основная навигация">
-          <a href="#about">О клинике</a>
-          <a href="#services">Услуги</a>
-          <a href="#specialists">Специалисты</a>
-          <a href="/offers">Акции</a>
-          <a href="#documents">Документы</a>
-          <a href="#contacts">Контакты</a>
+          <Link href="/#about">О клинике</Link>
+          <Link href="/#services">Услуги</Link>
+          <Link href="/#specialists">Специалисты</Link>
+          <Link href="/offers">Акции</Link>
+          <Link href="/#documents">Документы</Link>
+          <Link href="/contacts">Контакты</Link>
         </nav>
 
         <div className="header-actions">

@@ -16,6 +16,8 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+The contacts page at `/contacts` uses the 2GIS MapGL API. Set `NEXT_PUBLIC_2GIS_MAP_KEY` in `.env.local` locally and in the deployment environment before building. The map key must be enabled for the 2GIS Map Tiles API. If it is missing or the map script cannot load, the page shows a link to the address in 2GIS.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

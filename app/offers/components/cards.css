@@ -1,99 +1,66 @@
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 40px;
-   animation: fadeIn 0.4s ease;
+.offers-content { width: min(1720px, calc(100% - 200px)); margin: 0 auto; padding-bottom: 60px; }
+.offers-breadcrumb { display: flex; align-items: center; gap: 15px; height: 52px; color: #37241b; font-size: 18px; line-height: 26px; }
+.offers-breadcrumb span:last-child { font-weight: 500; }
+.offers-breadcrumb a:hover { text-decoration: underline; }
+.offers-intro { display: grid; grid-template-columns: 1fr min(1140px, 66.3%); gap: 20px; align-items: start; margin: 40px 0; }
+.offers-intro h1 { display: flex; align-items: center; gap: 4px; margin: 0; color: #91b5d5; font-size: 40px; font-weight: 500; line-height: 52px; }
+.offers-intro h1 picture, .offers-intro h1 img { display: block; width: 50px; height: 50px; }
+.offers-intro p { margin: 0; color: #37241b; font-size: 40px; font-weight: 500; line-height: 52px; text-indent: 25.4%; }
+.offers-loading { min-height: 557px; margin: 0; }
+.offers-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.offer-card { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; height: 557px; min-width: 0; padding: 20px; overflow: hidden; border-radius: 20px; background: #f4f7ff; color: #212529; }
+.offer-card-image { position: relative; height: 100%; min-width: 0; overflow: hidden; border-radius: 10px; }
+.offer-card-image img { object-fit: cover; }
+.offer-card-body { display: flex; min-width: 0; flex-direction: column; justify-content: space-between; }
+.offer-card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 16px; line-height: 24px; }
+.offer-card-top span { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.offer-card-top img { display: block; flex: 0 0 24px; }
+.offer-card-copy { display: grid; gap: 12px; }
+.offer-card h2 { margin: 0; font-size: 36px; font-weight: 500; line-height: 44px; }
+.offer-card-copy p { display: -webkit-box; margin: 0; overflow: hidden; font-size: 20px; line-height: 28px; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
+.offer-card time { color: #91b5d5; font-size: 20px; line-height: 28px; }
+.offers-pagination { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 20px; }
+.offers-pagination button { display: inline-grid; place-items: center; flex: 0 0 auto; border: 0; cursor: pointer; font: 400 16px/24px var(--sans); }
+.offers-pagination-arrow { width: 60px; height: 60px; border-radius: 6px; background: #37241b; }
+.offers-pagination-arrow img { display: block; }
+.offers-pagination-prev img { transform: rotate(90deg); }
+.offers-pagination-next img { transform: rotate(-90deg); }
+.offers-pagination-arrow:disabled { opacity: .65; cursor: default; }
+.offers-page-numbers { display: flex; align-items: center; gap: 5px; }
+.offers-page-numbers button, .offers-pagination-ellipsis { display: inline-grid; width: 60px; height: 60px; place-items: center; border-radius: 6px; background: #f4f7ff; color: #212529; }
+.offers-page-numbers button.is-active { outline: 1px solid #212529; outline-offset: -1px; }
+.offers-page-numbers button:hover:not(.is-active) { background: #e6edf9; }
+@media (max-width: 1450px) {
+  .offers-content { width: auto; margin: 0 60px; }
+  .offers-intro p { font-size: 34px; line-height: 44px; }
+  .offer-card h2 { font-size: 28px; line-height: 36px; }
+  .offer-card-copy p { font-size: 18px; line-height: 26px; }
 }
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@media (max-width: 1200px) {
+  .offers-content { margin: 0 40px; }
+  .offers-intro { grid-template-columns: 1fr 67%; }
+  .offers-grid { grid-template-columns: 1fr; }
+  .offer-card { height: 430px; }
 }
-.card {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto 1fr auto;
-  grid-template-areas:
-    "img  mini"
-    "img  title"
-    "img  desc"
-    "img  date";
-  gap: 15px;
-  padding: 15px;
-  background: #F4F7FF;
-  border-radius: 20px;
-  overflow: hidden;
-  align-items: center;
-  width: 850px;
-  height: 557px;
+@media (max-width: 720px) {
+  .offers-content { margin: 0 16px; padding-bottom: 40px; }
+  .offers-intro { display: block; margin: 20px 0; }
+  .offers-intro h1 { font-size: 24px; line-height: 32px; }
+  .offers-intro h1 picture, .offers-intro h1 img { width: 24px; height: 24px; }
+  .offers-intro p { margin-top: 4px; font-size: 24px; line-height: 32px; text-indent: 26%; }
+  .offers-grid { gap: 20px; }
+  .offer-card { display: flex; height: 557px; flex-direction: column; gap: 20px; padding: 20px; }
+  .offer-card-image { flex: 0 0 247px; height: 247px; width: 100%; }
+  .offer-card-body { flex: 1; min-height: 0; }
+  .offer-card h2 { font-size: 20px; line-height: 28px; }
+  .offer-card-copy p { font-size: 16px; line-height: 24px; -webkit-line-clamp: 5; }
+  .offers-pagination-arrow { width: 48px; height: 48px; }
+  .offers-pagination-arrow img { width: 24px; height: 24px; }
+  .offers-page-numbers button, .offers-pagination-ellipsis { width: 48px; height: 48px; border-radius: 5px; }
 }
-
-.card img {
-  grid-area: img;
-  width: 80%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 15px;
-}
-/* .card p:first-child::after {
-  content: "→";
-  font-size: 18px;
-  cursor: pointer;
-} */
-
-
-.card h2 {
-  grid-area: title;
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 1.3;
-  margin: 0;
-}
-
-
-.card p:nth-child(4) {
-  grid-area: desc;
-  font-weight: 400;
-  font-size: 20px;
-  color: #666;
-  line-height: 1.6;
-  margin: 0;
-}
-
-
-.card p:last-child {
-  grid-area: date;
-  font-size: 20px;
-  color: #91B5D5;
-  text-align: left;
-  margin: 0;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 25px;
-}
-
-.pagination button {
-  width: 60px;
-  height: 60px;
-  background: #F4F7FF;
-  border-radius: 6px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-
-.pagination .active {
-  border: 1px solid black;
+@media (max-width: 390px) {
+  .offers-pagination { gap: 6px; }
+  .offers-page-numbers { gap: 3px; }
+  .offers-page-numbers button, .offers-pagination-ellipsis { width: 36px; height: 36px; }
+  .offers-pagination-arrow { width: 36px; height: 36px; }
 }

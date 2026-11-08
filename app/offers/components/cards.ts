@@ -10,7 +10,7 @@ export const cards = [
   },
   {
     id: 2,
-    mini_title: "Молекула",
+    mini_title: "МОЛЕКУЛА",
     title: "PURE MOLECULE - инновационная технология омоложения",
     description: "МОЛЕКУЛА - программа комплексного омоложения организма, уникальная разработка европейских врачей-косметологов.",
     image: "/full-filler-procedure.jpg",

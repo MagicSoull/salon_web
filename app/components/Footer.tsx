@@ -64,12 +64,12 @@ export default function Footer() {
             </div>
 
             <a className="accessibility-link" href="#top">
-              <span aria-hidden="true">●</span>
+              <Image src="/icon-view.svg" alt="" width={24} height={24} />
               Версия для слабовидящих
             </a>
 
             <p className="footer-copyright">
-              © Медико-косметический центр Арт-медика 2026
+              © Медико-косметологический центр Арт-медика 2026
               <br />
               Категория 18+
             </p>
@@ -79,11 +79,11 @@ export default function Footer() {
           <FooterLinks title="Услуги" links={serviceLinks} />
 
           <section className="footer-contacts" aria-label="Контакты">
-            <a className="footer-appointment" href="#appointment">Записаться</a>
+            <a className="footer-appointment" href="tel:+73517751918">Записаться</a>
             <address>
               <p><Image src="/icon-location.svg" alt="" width={14} height={16} />Челябинск, пр. Ленина 12а</p>
               <p><Image src="/icon-phone.svg" alt="" width={17} height={17} /><a href="tel:+73517751918">+7 (351) 775-19-18</a></p>
-              <p><Image src="/icon-message.svg" alt="" width={24} height={24} /><a href="mailto:marketing.art.medica@mail.ru">marketing.art.medica@mail.ru</a></p>
+              <p><Image src="/icon-message.svg" alt="" width={24} height={24} /><a href="mailto:marketing.art-medica@mail.ru">marketing.art-medica@mail.ru</a></p>
               <p><Image src="/icon-time.svg" alt="" width={24} height={24} />09:00 до 20:00<br /><b>понедельник – суббота</b></p>
             </address>
           </section>

@@ -5,6 +5,17 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header-inner">
+        <details className="mobile-menu">
+          <summary aria-label="Открыть меню"><Image src="/offers/menu.svg" alt="" width={32} height={32} /></summary>
+          <nav aria-label="Мобильная навигация">
+            <Link href="/#about">О клинике</Link>
+            <Link href="/#services">Услуги</Link>
+            <Link href="/#specialists">Специалисты</Link>
+            <Link href="/offers">Акции</Link>
+            <Link href="/#documents">Документы</Link>
+            <Link href="/contacts">Контакты</Link>
+          </nav>
+        </details>
         <Link className="logo" href="/" aria-label="Арт-Медика — на главную">
           <Image
             src="/logo.svg"
@@ -31,7 +42,7 @@ export default function Header() {
             ПН–СБ с 9:00 до 20:00
           </p>
 
-          <a className="appointment-button" href="#appointment">
+          <a className="appointment-button" href="tel:+73517751918">
             Записаться
           </a>
         </div>

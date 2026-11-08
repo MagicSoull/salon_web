@@ -14,6 +14,7 @@
   min-height: 144px;
   margin: 0 auto;
 }
+.mobile-menu { display: none; }
 
 .logo {
   display: block;
@@ -96,4 +97,37 @@
 @media (max-width: 1300px) {
   .header-inner { margin: 0 40px; }
   .header-address { display: none; }
+}
+@media (max-width: 1100px) {
+  .header-inner { display: grid; grid-template-columns: 32px 1fr auto; gap: 20px; min-height: 88px; }
+  .mobile-menu { display: block; grid-column: 1; grid-row: 1; }
+  .mobile-menu summary { display: block; width: 32px; height: 32px; cursor: pointer; list-style: none; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary img { display: block; }
+  .mobile-menu nav { position: absolute; top: 88px; right: 0; left: 0; z-index: 20; display: grid; gap: 0; padding: 10px 40px 18px; background: #fff; box-shadow: 0 14px 24px rgb(55 36 27 / 12%); }
+  .mobile-menu nav a { padding: 10px 0; font-size: 17px; }
+  .logo { grid-column: 2; grid-row: 1; justify-self: center; }
+  .logo img { width: 220px; height: 52px; }
+  .header-inner > .nav { display: none; }
+  .header-actions { grid-column: 3; grid-row: 1; }
+  .appointment-button { min-width: 0; min-height: 48px; padding: 0 28px; }
+}
+@media (max-width: 720px) {
+  .header-inner { display: grid; grid-template-columns: 32px 1fr auto; gap: 12px; min-height: 72px; margin: 0 16px; }
+  .mobile-menu { display: block; grid-column: 1; grid-row: 1; }
+  .mobile-menu summary { display: block; width: 32px; height: 32px; cursor: pointer; list-style: none; }
+  .mobile-menu summary::-webkit-details-marker { display: none; }
+  .mobile-menu summary img { display: block; }
+  .mobile-menu nav { top: 72px; padding: 10px 16px 18px; }
+  .mobile-menu nav a { padding: 10px 0; font-size: 17px; }
+  .logo { grid-column: 2; grid-row: 1; justify-self: center; }
+  .logo img { width: 152px; height: 36px; }
+  .header-inner > .nav { display: none; }
+  .header-actions { grid-column: 3; grid-row: 1; }
+  .appointment-button { min-width: 0; min-height: 40px; padding: 0 20px; font-size: 14px; }
+}
+@media (max-width: 380px) {
+  .header-inner { gap: 6px; }
+  .logo img { width: 135px; height: auto; }
+  .appointment-button { padding: 0 12px; }
 }

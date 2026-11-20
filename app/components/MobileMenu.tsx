@@ -4,11 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const serviceItems = ["Пластическая хирургия", "Косметология", "Топ-продукты", "Дерматология"];
+const serviceItems = [
+  { label: "Пластическая хирургия", href: "/services#plastic-surgery" },
+  { label: "Косметология", href: "/services#cosmetology" },
+  { label: "Топ-продукты", href: "/services#top-products" },
+  { label: "Дерматология", href: "/services#dermatology" },
+];
 const menuItems = [
   { label: "О клинике", href: "/#about" },
   { label: "Специалисты", href: "/#specialists" },
-  { label: "Услуги", href: "/#services" },
+  { label: "Услуги", href: "/services" },
   { label: "Проекты", href: "/projects" },
   { label: "Акции", href: "/offers" },
   { label: "Новости" },
@@ -57,7 +62,7 @@ export default function MobileMenu() {
             </div>
             <nav className="mobile-menu-links" aria-label="Мобильная навигация">
               <button className="mobile-menu-services" type="button" aria-expanded={servicesOpen} onClick={() => setServicesOpen((value) => !value)}>Услуги <Image src="/nav/arrow-down.svg" alt="" width={24} height={24} /></button>
-              {servicesOpen && <div className="mobile-menu-submenu">{serviceItems.map((item) => <Link key={item} href="/#services" onClick={() => setOpen(false)}>{item}</Link>)}</div>}
+              {servicesOpen && <div className="mobile-menu-submenu">{serviceItems.map((item) => <Link key={item.label} href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}</div>}
               {menuItems.map(({ label, href }) => href ? <Link key={label} href={href} onClick={() => setOpen(false)}>{label}</Link> : <span key={label}>{label}</span>)}
             </nav>
           </div>

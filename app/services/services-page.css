@@ -1,0 +1,65 @@
+.services-page-content { width: min(1720px, calc(100% - 200px)); margin: 0 auto; padding-bottom: 60px; }
+.services-page-breadcrumb { display: flex; align-items: center; gap: 15px; height: 52px; color: #37241b; font-size: 18px; line-height: 26px; }
+.services-page-breadcrumb span:last-child { font-weight: 500; }
+.services-page-breadcrumb a:hover { text-decoration: underline; }
+.services-page-intro { display: grid; grid-template-columns: 1fr min(1140px, 66.3%); gap: 20px; align-items: start; margin: 40px 0; }
+.services-page-intro h1 { display: flex; align-items: center; gap: 4px; margin: 0; color: #91b5d5; font-size: 40px; font-weight: 500; line-height: 52px; }
+.services-page-intro h1 picture, .services-page-intro h1 img { display: block; width: 50px; height: 50px; }
+.services-page-intro-copy { color: #37241b; font-size: 40px; font-weight: 500; line-height: 52px; }
+.services-page-intro-copy p { margin: 0; }
+.services-page-intro-first-desktop, .services-page-intro-first-mobile { text-align: right; white-space: nowrap; }
+.services-page-intro-first-mobile { display: none; }
+.services-page-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px; row-gap: 40px; }
+@media (min-width: 721px) {
+  .services-page-card:nth-child(-n+2) { width: calc(100% - 10px); }
+  .services-page-card:nth-child(2) { margin-left: 10px; }
+}
+.services-page-card { min-width: 0; scroll-margin-top: 24px; }
+.services-page-card-image { position: relative; width: 100%; aspect-ratio: 5 / 3; overflow: hidden; border-radius: 20px; background: #f4f7ff; }
+.services-page-card-image picture { position: relative; display: block; width: 100%; height: 100%; }
+.services-page-card-image img { object-fit: cover; }
+.services-page-card-copy { display: grid; gap: 12px; margin-top: 20px; color: #212529; }
+.services-page-card h2 { margin: 0; font-size: 36px; font-weight: 500; line-height: 44px; }
+.services-page-card p { margin: 0; font-size: 20px; line-height: 28px; }
+.services-page-mobile-copy { display: none; }
+@media (max-width: 1450px) {
+  .services-page-content { width: auto; margin: 0 60px; }
+  .services-page-intro-copy { font-size: 34px; line-height: 44px; }
+  .services-page-card h2 { font-size: 30px; line-height: 38px; }
+  .services-page-card p { font-size: 18px; line-height: 26px; }
+}
+@media (max-width: 1100px) {
+  .services-page-content { margin: 0 40px; }
+  .services-page-intro { display: block; }
+  .services-page-intro-copy { margin-top: 20px; }
+  .services-page-grid { row-gap: 32px; }
+}
+@media (max-width: 720px) {
+  .services-page-content { margin: 0 16px; padding-bottom: 40px; }
+  .services-page-intro { margin: 20px 0; }
+  .services-page-intro h1 { font-size: 24px; line-height: 32px; }
+  .services-page-intro h1 picture, .services-page-intro h1 img { width: 24px; height: 24px; }
+  .services-page-intro-copy { margin-top: 4px; font-size: 24px; line-height: 32px; }
+  .services-page-intro-first-desktop { display: none; }
+  .services-page-intro-first-mobile { display: block; }
+  .services-page-grid { grid-template-columns: 1fr; gap: 44px; }
+  .services-page-card-image { aspect-ratio: 388 / 228; border-radius: 10px; }
+  .services-page-card-copy { gap: 10px; margin-top: 18px; }
+  .services-page-card h2 { color: #1c1b1f; font-size: 24px; line-height: 32px; }
+  .services-page-card p { color: #a09cab; font-size: 16px; line-height: 24px; }
+  .services-page-desktop-copy { display: none; }
+  .services-page-mobile-copy { display: inline; }
+  .services-page-card-cosmetology { order: 1; }
+  .services-page-card-otorhinolaryngology { order: 2; }
+  .services-page-card-ent-surgery { order: 3; }
+  .services-page-card-massage { order: 4; }
+  .services-page-card-aesthetic-gynecology { order: 5; }
+  .services-page-card-dermatology { order: 6; }
+  .services-page-card-top-products { order: 7; }
+  .services-page-card-plastic-surgery { order: 8; }
+  .services-page-card-neurology { order: 9; }
+  .services-page-card-therapy { order: 10; }
+}
+@media (max-width: 380px) {
+  .services-page-intro-first-mobile { white-space: normal; }
+}

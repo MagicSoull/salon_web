@@ -19,7 +19,7 @@ export default function Header() {
 
         <nav className="nav" aria-label="Основная навигация">
           <Link href="/#about">О клинике</Link>
-          <Link href="/#services">Услуги</Link>
+          <Link href="/services">Услуги</Link>
           <Link href="/#specialists">Специалисты</Link>
           <Link href="/offers">Акции</Link>
           <Link href="/#documents">Документы</Link>

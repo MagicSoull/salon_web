@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 
 type ServiceCard = {
@@ -92,7 +93,7 @@ export default function Services() {
   return (
     <section className="services" id="services" aria-labelledby="services-heading">
       <div className="services-inner">
-        <a className="services-kicker" href="#services">Услуги ↗</a>
+        <Link className="services-kicker" href="/services">Услуги ↗</Link>
         <div className="services-intro">
           <h2 id="services-heading">В клинике «Арт-медика» мы объединили многолетний опыт врачей и современные технологии, чтобы предложить вам максимально широкий спектр медицинских и эстетических услуг.</h2>
         </div>

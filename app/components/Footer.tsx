@@ -27,6 +27,21 @@ const serviceLinks = [
   "Массаж",
 ];
 
+const footerRoutes: Record<string, string> = {
+  "Услуги": "/services",
+  "Проекты": "/projects",
+  "Пластическая хирургия": "/services#plastic-surgery",
+  "Косметология": "/services#cosmetology",
+  "Топ-продукты": "/services#top-products",
+  "Дерматология": "/services#dermatology",
+  "Оториноларингология": "/services#otorhinolaryngology",
+  "Лор-хирургия": "/services#ent-surgery",
+  "Неврология и рефлексотерапия": "/services#neurology",
+  "Эстетическая гинекология": "/services#aesthetic-gynecology",
+  "Терапевтический приём": "/services#therapy",
+  "Массаж": "/services#massage",
+};
+
 function FooterLinks({ title, links }: { title: string; links: string[] }) {
   return (
     <section className="footer-links" aria-label={title}>
@@ -34,7 +49,7 @@ function FooterLinks({ title, links }: { title: string; links: string[] }) {
       <ul>
         {links.map((link) => (
           <li key={link}>
-            <Link href={link === "Проекты" ? "/projects" : "#top"}>{link}</Link>
+            <Link href={footerRoutes[link] ?? "#top"}>{link}</Link>
           </li>
         ))}
       </ul>

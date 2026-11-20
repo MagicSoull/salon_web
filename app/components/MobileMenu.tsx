@@ -9,7 +9,7 @@ const menuItems = [
   { label: "О клинике", href: "/#about" },
   { label: "Специалисты", href: "/#specialists" },
   { label: "Услуги", href: "/#services" },
-  { label: "Проекты", href: "/#projects" },
+  { label: "Проекты", href: "/projects" },
   { label: "Акции", href: "/offers" },
   { label: "Новости" },
   { label: "Цены" },

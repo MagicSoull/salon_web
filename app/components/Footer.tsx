@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const clinicLinks = [
   "О клинике",
@@ -33,7 +34,7 @@ function FooterLinks({ title, links }: { title: string; links: string[] }) {
       <ul>
         {links.map((link) => (
           <li key={link}>
-            <a href="#top">{link}</a>
+            <Link href={link === "Проекты" ? "/projects" : "#top"}>{link}</Link>
           </li>
         ))}
       </ul>

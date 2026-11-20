@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 type TabOption = { label: string; value: string };
@@ -59,7 +60,7 @@ function FilterTabs({ options, value, onChange }: { options: TabOption[]; value:
 }
 
 function SectionIntro({ label, children }: { label: string; children: React.ReactNode }) {
-  return <div className="showcase-intro"><a className="showcase-label" href="#top">{label}<span>↗</span></a><p>{children}</p></div>;
+  return <div className="showcase-intro"><Link className="showcase-label" href={label === "Проекты" ? "/projects" : "#top"}>{label}<span>↗</span></Link><p>{children}</p></div>;
 }
 
 function CarouselControls({ onBack, onNext }: { onBack: () => void; onNext: () => void }) {

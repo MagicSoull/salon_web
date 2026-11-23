@@ -11,16 +11,16 @@ const serviceItems = [
   { label: "Дерматология", href: "/services#dermatology" },
 ];
 const menuItems = [
-  { label: "О клинике", href: "/#about" },
-  { label: "Специалисты", href: "/#specialists" },
+  { label: "О клинике", href: "/about" },
+  { label: "Специалисты", href: "/specialists" },
   { label: "Услуги", href: "/services" },
   { label: "Проекты", href: "/projects" },
   { label: "Акции", href: "/offers" },
-  { label: "Новости" },
-  { label: "Цены" },
+  { label: "Новости", href: "/news" },
+  { label: "Цены", href: "/prices" },
   { label: "Контакты", href: "/contacts" },
-  { label: "Документы" },
-  { label: "Вопросы и ответы" },
+  { label: "Документы", href: "/documents" },
+  { label: "Вопросы и ответы", href: "/faq" },
 ];
 
 export default function MobileMenu() {

@@ -59,6 +59,8 @@
   .services-page-card-plastic-surgery { order: 8; }
   .services-page-card-neurology { order: 9; }
   .services-page-card-therapy { order: 10; }
+  .services-page-card-venereology { order: 11; }
+  .services-page-card-diagnostics { order: 12; }
 }
 @media (max-width: 380px) {
   .services-page-intro-first-mobile { white-space: normal; }

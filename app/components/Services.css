@@ -104,6 +104,8 @@
   border-radius: 13px;
   background: #c6d0de;
 }
+.service-card-route { position: absolute; z-index: 3; inset: 0; }
+.service-card-route:focus-visible { outline: 3px solid #37241b; outline-offset: -4px; }
 
 .service-card-image {
   z-index: 0;

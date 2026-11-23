@@ -30,7 +30,7 @@ export default function CardsList() {
   return (
     <section aria-label="Список акций">
       <div className="offers-grid">{visibleCards.map((card) => <Card key={card.id} {...card} />)}</div>
-      <nav className="offers-pagination" aria-label="Страницы акций">
+      {totalPages > 1 && <nav className="offers-pagination" aria-label="Страницы акций">
         <button type="button" className="offers-pagination-arrow offers-pagination-prev" aria-label="Предыдущая страница" onClick={() => changePage(page - 1)} disabled={page === 1}><Image src="/offers/nav-arrow.svg" alt="" width={36} height={36} /></button>
         <div className="offers-page-numbers">
           {pageNumbers(page).map((number, index) => number === "ellipsis" ? (
@@ -40,7 +40,7 @@ export default function CardsList() {
           ))}
         </div>
         <button type="button" className="offers-pagination-arrow offers-pagination-next" aria-label="Следующая страница" onClick={() => changePage(page + 1)} disabled={page === totalPages}><Image src="/offers/nav-arrow.svg" alt="" width={36} height={36} /></button>
-      </nav>
+      </nav>}
     </section>
   );
 }

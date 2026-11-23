@@ -18,7 +18,7 @@
 .projects-card-copy h2 { margin: 0; font-size: 36px; font-weight: 500; line-height: 44px; }
 .projects-card-copy p { margin: 0; font-size: 20px; line-height: 28px; }
 .projects-card-copy p.is-clamped { display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
-.projects-card-button { min-height: 52px; padding: 12px 40px; border: 0; border-radius: 100px; background: #37241b; color: #fff; cursor: pointer; font: 500 18px/26px var(--sans); }
+.projects-card-button { display: inline-grid; min-height: 52px; place-items: center; padding: 12px 40px; border: 0; border-radius: 100px; background: #37241b; color: #fff; cursor: pointer; font: 500 18px/26px var(--sans); }
 .projects-card-button:hover { background: #59392b; }
 .projects-card-button:focus-visible { outline: 2px solid #91b5d5; outline-offset: 3px; }
 .projects-card time { color: #91b5d5; font-size: 20px; line-height: 28px; }

@@ -28,18 +28,26 @@ const serviceLinks = [
 ];
 
 const footerRoutes: Record<string, string> = {
+  "О клинике": "/about",
+  "Специалисты": "/specialists",
+  "Акции": "/offers",
+  "Новости": "/news",
+  "Цены": "/prices",
+  "Контакты": "/contacts",
+  "Документы": "/documents",
+  "Вопросы и ответы": "/faq",
   "Услуги": "/services",
   "Проекты": "/projects",
-  "Пластическая хирургия": "/services#plastic-surgery",
-  "Косметология": "/services#cosmetology",
-  "Топ-продукты": "/services#top-products",
-  "Дерматология": "/services#dermatology",
-  "Оториноларингология": "/services#otorhinolaryngology",
-  "Лор-хирургия": "/services#ent-surgery",
-  "Неврология и рефлексотерапия": "/services#neurology",
-  "Эстетическая гинекология": "/services#aesthetic-gynecology",
-  "Терапевтический приём": "/services#therapy",
-  "Массаж": "/services#massage",
+  "Пластическая хирургия": "/services/plastic-surgery",
+  "Косметология": "/services/cosmetology",
+  "Топ-продукты": "/services/top-products",
+  "Дерматология": "/services/dermatology",
+  "Оториноларингология": "/services/otorhinolaryngology",
+  "Лор-хирургия": "/services/ent-surgery",
+  "Неврология и рефлексотерапия": "/services/neurology",
+  "Эстетическая гинекология": "/services/aesthetic-gynecology",
+  "Терапевтический приём": "/services/therapy",
+  "Массаж": "/services/massage",
 };
 
 function FooterLinks({ title, links }: { title: string; links: string[] }) {
@@ -63,26 +71,26 @@ export default function Footer() {
       <div className="footer-main">
         <div className="footer-grid">
           <section className="footer-brand" aria-label="Арт-Медика">
-            <a className="footer-logo" href="#top" aria-label="Арт-Медика — на главную">
+            <Link className="footer-logo" href="/" aria-label="Арт-Медика — на главную">
               <Image src="/logo.svg" alt="Арт-Медика" width={270} height={64} />
-            </a>
+            </Link>
 
             <div className="footer-socials" aria-label="Мы в социальных сетях">
-              <a className="social" href="#top" aria-label="MAX">
+              <span className="social" aria-label="MAX">
                 <Image src="/social-max.png" alt="" width={48} height={48} />
-              </a>
-              <a className="social" href="#top" aria-label="ВКонтакте">
+              </span>
+              <span className="social" aria-label="ВКонтакте">
                 <Image src="/social-vk.png" alt="" width={48} height={48} />
-              </a>
-              <a className="social" href="#top" aria-label="Telegram">
+              </span>
+              <a className="social" href="https://t.me/Artmedica_bot" target="_blank" rel="noreferrer" aria-label="Telegram">
                 <Image src="/social-telegram.png" alt="" width={48} height={48} />
               </a>
             </div>
 
-            <a className="accessibility-link" href="#top">
+            <span className="accessibility-link">
               <Image src="/icon-view.svg" alt="" width={24} height={24} />
               Версия для слабовидящих
-            </a>
+            </span>
 
             <p className="footer-copyright">
               © Медико-косметологический центр Арт-медика 2026

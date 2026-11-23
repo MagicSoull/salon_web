@@ -1,6 +1,7 @@
 export const cards = [
   {
     id: 1,
+    slug: "petal-lifting",
     mini_title: "Нитевой лифтинг",
     title: 'Нитевой лифтинг "Лепесток" скидка 50%',
     description:
@@ -10,6 +11,7 @@ export const cards = [
   },
   {
     id: 2,
+    slug: "pure-molecule",
     mini_title: "МОЛЕКУЛА",
     title: "PURE MOLECULE - инновационная технология омоложения",
     description: "МОЛЕКУЛА - программа комплексного омоложения организма, уникальная разработка европейских врачей-косметологов.",
@@ -17,10 +19,4 @@ export const cards = [
     date: "07.04.2025"
   },
 ];
-export const allCards = Array.from(
-  { length: 60 },
-  (_, index) => ({
-    ...cards[index % cards.length],
-    id: index + 1,
-  })
-);
+export const allCards = cards;

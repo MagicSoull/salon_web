@@ -3,11 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { serviceCategories } from "../data/services";
 
 type ServiceCard = {
   title: string;
   items: string[];
   image: string;
+  href: string;
 };
 
 const surgeryCards: ServiceCard[] = [
@@ -15,21 +17,25 @@ const surgeryCards: ServiceCard[] = [
     title: "Пластика лица",
     items: ["Блефаропластика", "Ринопластика", "Отопластика", "Фейслифтинг", "Коррекция губ", "Нитевой лифтинг"],
     image: "/service-face.png",
+    href: "/services/plastic-surgery/face",
   },
   {
     title: "Пластика груди",
     items: ["Маммопластика", "Липофилинг"],
     image: "/service-breast.png",
+    href: "/services/plastic-surgery/breast",
   },
   {
     title: "Пластика тела",
     items: ["Абдоминопластика", "Брахиопластика", "Липосакция", "Подтяжка бедер"],
     image: "/service-body.png",
+    href: "/services/plastic-surgery/body",
   },
   {
     title: "Интимная пластика\nдля мужчин",
     items: ["Интимная пластика"],
     image: "/service-men.png",
+    href: "/services/plastic-surgery/men",
   },
   {
     title: "Комбо-операции",
@@ -41,6 +47,7 @@ const surgeryCards: ServiceCard[] = [
       "Блефаропластика + Липосакция живота и талии + Липофилинг груди",
     ],
     image: "/service-face-care.png",
+    href: "/services/plastic-surgery/combined",
   },
   {
     title: "Другие услуги",
@@ -52,18 +59,22 @@ const surgeryCards: ServiceCard[] = [
       "Плацентарная терапия",
     ],
     image: "/service-face-care.png",
+    href: "/services/plastic-surgery/preparation",
   },
 ];
 
+const cosmetology = serviceCategories.find((item) => item.slug === "cosmetology")!;
+const medical = ["otorhinolaryngology", "dermatology", "neurology", "therapy", "diagnostics"].map((slug) => serviceCategories.find((item) => item.slug === slug)!);
 const categories = [
   { title: "Пластическая хирургия", cards: surgeryCards },
-  { title: "Косметология", cards: [] },
-  { title: "Медицинские услуги", cards: [] },
+  { title: "Косметология", cards: cosmetology.treatments.map((item) => ({ title: item.title, items: [item.description], image: item.image ?? cosmetology.image, href: `/services/cosmetology/${item.slug}` })) },
+  { title: "Медицинские услуги", cards: medical.map((item) => ({ title: item.title, items: [item.summary], image: item.image, href: `/services/${item.slug}` })) },
 ];
 
 function ServiceCard({ card }: { card: ServiceCard }) {
   return (
     <article className="service-card">
+      <Link className="service-card-route" href={card.href} aria-label={`${card.title} — подробнее`} />
       <Image
         className="service-card-image"
         src={card.image}

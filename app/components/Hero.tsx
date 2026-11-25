@@ -1,17 +1,14 @@
 import Image from "next/image";
+import { getHomePage, mediaUrl } from "../lib/site-content";
+import ClinicPhoneLink from "./ClinicPhoneLink";
 
-const statistics = [
-  { value: "20", label: "лет опыта работы\nв сфере медицины" },
-  { value: "20", label: "видов медицинских\nнаправлений деятельности" },
-  { value: "40+", label: "квалифицированных\nспециалистов" },
-];
-
-export default function Hero() {
+export default function Hero({ content }: { content: Awaited<ReturnType<typeof getHomePage>> }) {
+  const statistics = content.statistics ?? [];
   return (
     <section className="hero" aria-labelledby="hero-title">
       <Image
         className="hero-image"
-        src="/hero-consultation.png"
+        src={mediaUrl(content.heroImage)}
         alt="Врач консультирует пациентку"
         fill
         priority
@@ -22,8 +19,8 @@ export default function Hero() {
 
       <div className="hero-content">
         <div className="hero-copy">
-          <h1 id="hero-title">Ваше здоровье — наша забота</h1>
-          <p>Медико-косметологический центр с современным оборудованием и опытными специалистами</p>
+          <h1 id="hero-title">{content.heroTitle}</h1>
+          <p>{content.heroDescription}</p>
         </div>
 
         <div className="hero-statistics" aria-label="Преимущества центра">
@@ -36,9 +33,9 @@ export default function Hero() {
         </div>
       </div>
 
-      <a className="hero-call" href="tel:+73512200000" aria-label="Позвонить в клинику">
+      <ClinicPhoneLink className="hero-call" label="Позвонить в клинику">
         <Image src="/icon-phone.svg" alt="" width={36} height={36} aria-hidden="true" />
-      </a>
+      </ClinicPhoneLink>
     </section>
   );
 }

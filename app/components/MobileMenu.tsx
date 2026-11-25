@@ -4,12 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const serviceItems = [
-  { label: "Пластическая хирургия", href: "/services#plastic-surgery" },
-  { label: "Косметология", href: "/services#cosmetology" },
-  { label: "Топ-продукты", href: "/services#top-products" },
-  { label: "Дерматология", href: "/services#dermatology" },
-];
 const menuItems = [
   { label: "О клинике", href: "/about" },
   { label: "Специалисты", href: "/specialists" },
@@ -23,7 +17,7 @@ const menuItems = [
   { label: "Вопросы и ответы", href: "/faq" },
 ];
 
-export default function MobileMenu() {
+export default function MobileMenu({ serviceItems }: { serviceItems: { label: string; href: string }[] }) {
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);

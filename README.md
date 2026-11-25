@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Арт-Медика
 
-## Getting Started
+Сайт на Next.js. Содержимое страниц хранится в PostgreSQL и редактируется через Payload CMS. Повторяющиеся записи связаны между собой: направления → услуги, специалисты → направления, акции → услуги, проекты → направления, новости → проекты и направления.
 
-First, run the development server:
+## Локальный запуск
+
+Требуются Node.js 24.22.3 (или другая версия из `engines`), npm и Docker Desktop. Создайте `.env.local` по образцу `.env.example`: задайте длинные случайные `PAYLOAD_SECRET` и `POSTGRES_PASSWORD`, впишите тот же пароль в `DATABASE_URL`. Для карты контактов нужен `NEXT_PUBLIC_2GIS_MAP_KEY`.
 
 ```bash
+npm ci
+docker compose --env-file .env.local up -d postgres
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Откройте [сайт](http://localhost:3000), [FAQ](http://localhost:3000/faq), [новости](http://localhost:3000/news) и [админку](http://localhost:3000/admin). При первом входе в новую базу создайте администратора со своей почтой и паролем. PostgreSQL хранит данные в постоянном Docker-томе.
 
-The contacts page at `/contacts` uses the 2GIS MapGL API. Set `NEXT_PUBLIC_2GIS_MAP_KEY` in `.env.local` locally and in the deployment environment before building. The map key must be enabled for the 2GIS Map Tiles API. If it is missing or the map script cannot load, the page shows a link to the address in 2GIS.
+Чтобы заполнить новую базу первоначальными FAQ и новостями, запустите сервер с переменной `SEED_DEMO_CONTENT=true`. Это также загрузит их изображения. На Windows PowerShell:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```powershell
+$env:SEED_DEMO_CONTENT='true'
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+После этого уберите переменную и один раз запустите `node --env-file=.env.local scripts/seed-content.mjs`. Скрипт переносит текущие направления, услуги, специалистов, проекты, акции, результаты, отзывы, прайс, контакты, тексты страниц и изображения из `public`. Повторный запуск сохраняет существующие правки редактора; исходные файлы в `app/data` и скрипте нужны только для первоначального заполнения.
 
-## Learn More
+В админке доступны коллекции контента и общие настройки трёх страниц: главной, «О клинике» и контактов. При редактировании связанной записи изменение появляется во всех местах её показа. Публичные FAQ и новости показывают только опубликованные записи. Создание и редактирование доступны администраторам.
 
-To learn more about Next.js, take a look at the following resources:
+В поле изображения можно загрузить новый файл или выбрать запись из медиатеки. Payload сохраняет оригинал и уменьшенные варианты в `storage/media`; Next.js оптимизирует их при выдаче сайту. Для документов предусмотрены записи и загрузка PDF/изображений в `storage/documents`. Оба каталога игнорируются Git, поэтому при размещении их нужно подключить к постоянному диску или тому и включить в резервные копии вместе с PostgreSQL.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Проверка
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run lint
+npm run build
+```
 
-## Deploy on Vercel
+Для проверки связи между Payload и публичными страницами при запущенном сервере: `node --env-file=.env.local scripts/verify-payload.mjs` и `node --env-file=.env.local scripts/verify-content.mjs`. Скрипты временно меняют записи, проверяют страницы и возвращают исходные значения.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Размещение
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+На хостинге потребуется PostgreSQL, постоянное хранилище `storage/media` и `storage/documents`, резервное копирование базы и файлов, а также почтовый адаптер для писем администраторам. Схема находится в `migrations`; для новой production-базы выполните `npx payload migrate` с заданным `DATABASE_URL` до запуска приложения, затем однократно заполните контент. Локально Payload синхронизирует схему в режиме разработки. Онлайн-запись остаётся отдельным сервисом и в эту CMS не входит.

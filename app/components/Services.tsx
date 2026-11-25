@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { serviceCategories } from "../data/services";
+import type { ContentCategory } from "../lib/site-content";
 
 type ServiceCard = {
   title: string;
@@ -11,65 +11,6 @@ type ServiceCard = {
   image: string;
   href: string;
 };
-
-const surgeryCards: ServiceCard[] = [
-  {
-    title: "Пластика лица",
-    items: ["Блефаропластика", "Ринопластика", "Отопластика", "Фейслифтинг", "Коррекция губ", "Нитевой лифтинг"],
-    image: "/service-face.png",
-    href: "/services/plastic-surgery/face",
-  },
-  {
-    title: "Пластика груди",
-    items: ["Маммопластика", "Липофилинг"],
-    image: "/service-breast.png",
-    href: "/services/plastic-surgery/breast",
-  },
-  {
-    title: "Пластика тела",
-    items: ["Абдоминопластика", "Брахиопластика", "Липосакция", "Подтяжка бедер"],
-    image: "/service-body.png",
-    href: "/services/plastic-surgery/body",
-  },
-  {
-    title: "Интимная пластика\nдля мужчин",
-    items: ["Интимная пластика"],
-    image: "/service-men.png",
-    href: "/services/plastic-surgery/men",
-  },
-  {
-    title: "Комбо-операции",
-    items: [
-      "Маммопластика + Абдоминопластика + Лабиопластика",
-      "Маммопластика + Абдоминопластика",
-      "Маммопластика + Ринопластика",
-      "Маммопластика + Блефаропластика",
-      "Блефаропластика + Липосакция живота и талии + Липофилинг груди",
-    ],
-    image: "/service-face-care.png",
-    href: "/services/plastic-surgery/combined",
-  },
-  {
-    title: "Другие услуги",
-    items: [
-      "Обследование перед операцией",
-      "Подготовка к операции",
-      "Памятка пациенту перед операцией",
-      "Программа реабилитации после операции",
-      "Плацентарная терапия",
-    ],
-    image: "/service-face-care.png",
-    href: "/services/plastic-surgery/preparation",
-  },
-];
-
-const cosmetology = serviceCategories.find((item) => item.slug === "cosmetology")!;
-const medical = ["otorhinolaryngology", "dermatology", "neurology", "therapy", "diagnostics"].map((slug) => serviceCategories.find((item) => item.slug === slug)!);
-const categories = [
-  { title: "Пластическая хирургия", cards: surgeryCards },
-  { title: "Косметология", cards: cosmetology.treatments.map((item) => ({ title: item.title, items: [item.description], image: item.image ?? cosmetology.image, href: `/services/cosmetology/${item.slug}` })) },
-  { title: "Медицинские услуги", cards: medical.map((item) => ({ title: item.title, items: [item.summary], image: item.image, href: `/services/${item.slug}` })) },
-];
 
 function ServiceCard({ card }: { card: ServiceCard }) {
   return (
@@ -98,15 +39,23 @@ function ServiceCard({ card }: { card: ServiceCard }) {
   );
 }
 
-export default function Services() {
+export default function Services({ categories: serviceCategories, intro }: { categories: ContentCategory[]; intro: string }) {
   const [openCategory, setOpenCategory] = useState(0);
+  const surgery = serviceCategories.find((item) => item.slug === "plastic-surgery");
+  const cosmetology = serviceCategories.find((item) => item.slug === "cosmetology");
+  const medical = ["otorhinolaryngology", "dermatology", "neurology", "therapy", "diagnostics"].map((slug) => serviceCategories.find((item) => item.slug === slug)).filter((item): item is ContentCategory => Boolean(item));
+  const categories = [
+    { title: surgery?.title || "Пластическая хирургия", cards: surgery?.treatments.map((item) => ({ title: item.title, items: [item.description], image: item.image || surgery.image, href: `/services/${surgery.slug}/${item.slug}` })) || [] },
+    { title: cosmetology?.title || "Косметология", cards: cosmetology?.treatments.map((item) => ({ title: item.title, items: [item.description], image: item.image || cosmetology.image, href: `/services/${cosmetology.slug}/${item.slug}` })) || [] },
+    { title: "Медицинские услуги", cards: medical.map((item) => ({ title: item.title, items: [item.summary], image: item.image, href: `/services/${item.slug}` })) },
+  ];
 
   return (
     <section className="services" id="services" aria-labelledby="services-heading">
       <div className="services-inner">
         <Link className="services-kicker" href="/services">Услуги ↗</Link>
         <div className="services-intro">
-          <h2 id="services-heading">В клинике «Арт-медика» мы объединили многолетний опыт врачей и современные технологии, чтобы предложить вам максимально широкий спектр медицинских и эстетических услуг.</h2>
+          <h2 id="services-heading">{intro}</h2>
         </div>
 
         <div className="services-accordion">

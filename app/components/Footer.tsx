@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getServiceCategories, getSiteSettings } from "../lib/site-content";
 
 const clinicLinks = [
   "О клинике",
@@ -12,19 +13,6 @@ const clinicLinks = [
   "Контакты",
   "Документы",
   "Вопросы и ответы",
-];
-
-const serviceLinks = [
-  "Пластическая хирургия",
-  "Косметология",
-  "Топ-продукты",
-  "Дерматология",
-  "Оториноларингология",
-  "Лор-хирургия",
-  "Неврология и рефлексотерапия",
-  "Эстетическая гинекология",
-  "Терапевтический приём",
-  "Массаж",
 ];
 
 const footerRoutes: Record<string, string> = {
@@ -50,14 +38,14 @@ const footerRoutes: Record<string, string> = {
   "Массаж": "/services/massage",
 };
 
-function FooterLinks({ title, links }: { title: string; links: string[] }) {
+function FooterLinks({ title, links, routes = footerRoutes }: { title: string; links: string[]; routes?: Record<string, string> }) {
   return (
     <section className="footer-links" aria-label={title}>
       <h2>{title}</h2>
       <ul>
         {links.map((link) => (
           <li key={link}>
-            <Link href={footerRoutes[link] ?? "#top"}>{link}</Link>
+            <Link href={routes[link] ?? "#top"}>{link}</Link>
           </li>
         ))}
       </ul>
@@ -65,7 +53,11 @@ function FooterLinks({ title, links }: { title: string; links: string[] }) {
   );
 }
 
-export default function Footer() {
+export default async function Footer() {
+  const [settings, categories] = await Promise.all([getSiteSettings(), getServiceCategories()]);
+  const serviceLinks = categories.map((item) => item.title);
+  const serviceRoutes = Object.fromEntries(categories.map((item) => [item.title, `/services/${item.slug}`]));
+  const phoneHref = `tel:${(settings.phone || "").replace(/[^+\d]/g, "")}`;
   return (
     <footer className="footer" id="contacts">
       <div className="footer-main">
@@ -82,7 +74,7 @@ export default function Footer() {
               <span className="social" aria-label="ВКонтакте">
                 <Image src="/social-vk.png" alt="" width={48} height={48} />
               </span>
-              <a className="social" href="https://t.me/Artmedica_bot" target="_blank" rel="noreferrer" aria-label="Telegram">
+              <a className="social" href={settings.telegramUrl || "#"} target="_blank" rel="noreferrer" aria-label="Telegram">
                 <Image src="/social-telegram.png" alt="" width={48} height={48} />
               </a>
             </div>
@@ -100,15 +92,15 @@ export default function Footer() {
           </section>
 
           <FooterLinks title="Клиника" links={clinicLinks} />
-          <FooterLinks title="Услуги" links={serviceLinks} />
+          <FooterLinks title="Услуги" links={serviceLinks} routes={serviceRoutes} />
 
           <section className="footer-contacts" aria-label="Контакты">
-            <a className="footer-appointment" href="tel:+73517751918">Записаться</a>
+            <a className="footer-appointment" href={phoneHref}>Записаться</a>
             <address>
-              <p><Image src="/icon-location.svg" alt="" width={14} height={16} />Челябинск, пр. Ленина 12а</p>
-              <p><Image src="/icon-phone.svg" alt="" width={17} height={17} /><a href="tel:+73517751918">+7 (351) 775-19-18</a></p>
-              <p><Image src="/icon-message.svg" alt="" width={24} height={24} /><a href="mailto:marketing.art-medica@mail.ru">marketing.art-medica@mail.ru</a></p>
-              <p><Image src="/icon-time.svg" alt="" width={24} height={24} />09:00 до 20:00<br /><b>понедельник – суббота</b></p>
+              <p><Image src="/icon-location.svg" alt="" width={14} height={16} />{settings.address}</p>
+              <p><Image src="/icon-phone.svg" alt="" width={17} height={17} /><a href={phoneHref}>{settings.phone}</a></p>
+              <p><Image src="/icon-message.svg" alt="" width={24} height={24} /><a href={`mailto:${settings.email}`}>{settings.email}</a></p>
+              <p><Image src="/icon-time.svg" alt="" width={24} height={24} />{settings.hours}</p>
             </address>
           </section>
         </div>

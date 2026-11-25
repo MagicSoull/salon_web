@@ -1,12 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
+import { getServiceCategories, getSiteSettings } from "../lib/site-content";
 
-export default function Header() {
+export default async function Header() {
+  const [settings, categories] = await Promise.all([getSiteSettings(), getServiceCategories()]);
+  const phoneHref = `tel:${(settings.phone || "").replace(/[^+\d]/g, "")}`;
   return (
     <header className="header">
       <div className="header-inner">
-        <MobileMenu />
+        <MobileMenu serviceItems={categories.slice(0, 4).map((item) => ({ label: item.title, href: `/services/${item.slug}` }))} />
         <Link className="logo" href="/" aria-label="Арт-Медика — на главную">
           <Image
             src="/logo.svg"
@@ -28,12 +31,12 @@ export default function Header() {
 
         <div className="header-actions">
           <p className="header-address">
-            Челябинск, пр. Ленина 12а
+            {settings.address}
             <br />
-            ПН–СБ с 9:00 до 20:00
+            {settings.hours}
           </p>
 
-          <a className="appointment-button" href="tel:+73517751918">
+          <a className="appointment-button" href={phoneHref}>
             Записаться
           </a>
         </div>
